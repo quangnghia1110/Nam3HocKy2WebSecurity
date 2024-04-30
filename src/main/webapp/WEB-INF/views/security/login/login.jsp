@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +18,7 @@
 <div class="custom-center">
     <section class="bg-white">
         <div class="container py-2 h-100"> 
-            <div class="row d-flex justify-content-center align-items-center">
+            <div class="row d-flaex justify-content-center align-items-center">
                
               <div class="col-md-6">
                     		<img src='<c:url value="/security/img/login.jpg" />'alt="Image" class="img-fluid me-3"style="margin-left: -50px;">
@@ -26,6 +27,7 @@
                     <div class="card rounded-4 shadow">
                         <div class="card-body p-md-5 p-sm-2">
                             <form action="/security/login" method="post">
+                               <sec:csrfInput />
                                 <h3 class="fw-bold mb-4 text-center">Sign in</h3>
                                 <div class="alert">
                                     <c:if test="${not empty message}">

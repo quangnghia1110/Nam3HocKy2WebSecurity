@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,12 +19,54 @@
 		var retype = document.getElementById("floatingRetype").value;
 		var submitButton = document.getElementById("submit");
 
-		if (password === retype) {
+		if (password === retype && validatePasswordRequirements(password)) {
 			submitButton.disabled = false;
 		} else {
 			submitButton.disabled = true;
 		}
 	}
+</script>
+<script>
+// Hàm kiểm tra mật khẩu
+function validatePassword(input) {
+    var password = input.value;
+    var passwordError = document.getElementById("passwordError");
+    passwordError.innerHTML = ""; // Xóa thông báo lỗi trước khi kiểm tra lại
+    if (!containsUpperCase(password)) {
+        passwordError.innerHTML += "Mật khẩu cần chứa ít nhất một chữ cái in hoa.<br>";
+    }
+    if (!containsLowerCase(password)) {
+        passwordError.innerHTML += "Mật khẩu cần chứa ít nhất một chữ cái thường.<br>";
+    }
+    if (!containsDigit(password)) {
+        passwordError.innerHTML += "Mật khẩu cần chứa ít nhất một chữ số.<br>";
+    }
+    if (!containsSpecialCharacter(password)) {
+        passwordError.innerHTML += "Mật khẩu cần chứa ít nhất một ký tự đặc biệt.<br>";
+    }
+    if (!isLongEnough(password)) {
+        passwordError.innerHTML += "Mật khẩu cần ít nhất 12 ký tự.<br>";
+    }
+}
+function containsUpperCase(password) {// Hàm kiểm tra chứa ít nhất một chữ cái in hoa
+    return /[A-Z]/.test(password);
+}
+function containsLowerCase(password) {// Hàm kiểm tra chứa ít nhất một chữ cái thường
+    return /[a-z]/.test(password);
+}
+function containsDigit(password) {// Hàm kiểm tra chứa ít nhất một chữ số
+    return /\d/.test(password);
+}
+function containsSpecialCharacter(password) {// Hàm kiểm tra chứa ít nhất một ký tự đặc biệt
+    return /[@$!%*?&]/.test(password);
+}
+function isLongEnough(password) {// Hàm kiểm tra độ dài mật khẩu
+    return password.length >= 12;
+}
+function validatePasswordRequirements(password) {//Hàm kiểm tra xem mật khẩu có đáp ứng các yêu cầu không
+    return containsUpperCase(password) && containsLowerCase(password) && containsDigit(password) && containsSpecialCharacter(password) && isLongEnough(password);
+}
+
 </script>
 </head>
 <body>
@@ -47,7 +90,7 @@
 							</div>
 							<form action="/security/register" method="post"
 								class="needs-validation" novalidate="true">
-
+								<sec:csrfInput />
 								<div class="">
 									<div class="mb-3">
 										<div class="form-floating">
@@ -72,9 +115,10 @@
 									</div>
 
 									<div class="mb-3">
-										<label for="exampleInputGender" style="margin-left: 2px" class="form-label">Giới
-											tính*</label> <select name="gender" class="form-select"
-											id="exampleInputGender" required="required">
+										<label for="exampleInputGender" style="margin-left: 2px"
+											class="form-label">Giới tính*</label> <select name="gender"
+											class="form-select" id="exampleInputGender"
+											required="required">
 											<option value="1">Nam</option>
 											<option value="0">Nữ</option>
 										</select>
@@ -98,11 +142,17 @@
 									<div class="mb-3  ">
 										<div class="form-floating">
 											<input type="password" id="password" name="password"
-												class="form-control  rounded-3" required="required"
-												minlength="8" placeholder="Password" /> <label
-												for="password">Password: </label>
+												class="form-control rounded-3" required="required"
+												minlength="8" placeholder="Password"
+												oninput="validatePassword(this);" /> <label for="password">Password:
+											</label>
+											<div class="alert">
+												<div class="alert alert-danger" id="passwordError"></div>
+												<!-- Hiển thị thông báo lỗi mật khẩu -->
+											</div>
 										</div>
 									</div>
+
 									<div class="mb-3">
 										<div class="form-floating">
 											<input type="password" id="floatingRetype" name="retype"
