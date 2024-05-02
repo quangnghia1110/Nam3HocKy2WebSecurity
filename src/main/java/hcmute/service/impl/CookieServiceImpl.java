@@ -30,12 +30,23 @@ public class CookieServiceImpl {
         Cookie cookie = new Cookie(name, value);
         cookie.setMaxAge(hours * 60 * 60);
         cookie.setPath("/");
-        
-        // Construct the Set-Cookie header with the SameSite attribute
-        String cookieString = String.format("%s=%s; Max-Age=%d; Path=/; Secure; HttpOnly; SameSite=None", name, value, hours * 60 * 60);
-        response.setHeader("Set-Cookie", cookieString);
+
+        // Set SameSite=None attribute if supported
+        if (isSameSiteNoneCompatible()) {
+            cookie.setSecure(true); // Ensure cookie is only sent over HTTPS
+            cookie.setHttpOnly(true);
+            response.setHeader("Set-Cookie", String.format("%s=%s; Max-Age=%d; Path=/; Secure; HttpOnly; SameSite=None", name, value, hours * 60 * 60));
+        } else {
+            response.addCookie(cookie); // Fallback for older browsers
+        }
     }
 
+    // Check if SameSite=None is supported
+    private boolean isSameSiteNoneCompatible() {
+        String userAgent = request.getHeader("User-Agent");
+        // Add more user agents as needed
+        return !userAgent.contains("MSIE") && !userAgent.contains("Trident");
+    }
 
     public Cookie remove(String name) {
         Cookie[] cookies = request.getCookies();
