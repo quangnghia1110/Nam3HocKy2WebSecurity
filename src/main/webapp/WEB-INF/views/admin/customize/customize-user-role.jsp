@@ -39,22 +39,22 @@
 					<form class="mt-3 ms-3 me-3 mb-3"
 						action="/admin/userrole/saveOrUpdate" method="post">
 						<!-- ID Role -->
-						<div class="mb-3">
+						<%-- <div class="mb-3">
 							<label for="exampleInputRoleId" class="form-label">ID
 								Role*</label> <input readonly="readonly" placeholder="Role ID"
 								name="role_user_id" type="text" class="form-control"
 								id="exampleInputRoleId" aria-describedby="roleIdHelp"
 								value="${userRole.role_user_id}" required="required">
-						</div>
+						</div> --%>
 
 						<!-- ID Role -->
-						<div class="mb-3">
+						<%-- <div class="mb-3">
 							<label for="exampleInputRoleId" class="form-label">User
 								ID</label> <input readonly name="user_id" type="text"
 								class="form-control" id="exampleInputUserId"
 								aria-describedby="roleIdHelp" value="${userRole.user.id}"
 								required="required">
-						</div>
+						</div> --%>
 
 						<!-- ID Role -->
 						<div class="mb-3">
