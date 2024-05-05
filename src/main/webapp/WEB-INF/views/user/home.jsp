@@ -11,6 +11,14 @@
 <link rel="stylesheet" type="text/css" href="home.css" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+	
+	
+	<style type="text/css">
+		.font_size_12{
+			font-size: 12px !important;
+		}
+	</style>
+	
 </head>
 <body>
 	<div class="home">
@@ -24,8 +32,8 @@
 						<h3 class="toast__title">Success</h3>
 						<p class="toast__msg">${orderMessage }</p>
 					</div>
-					<a href="/order" class="btn btn-warning ms-2"
-						style="font-size: 12px !important">Xem đơn hàng</a>
+					<a href="/order" class="btn btn-warning ms-2 font_size_12"
+						>Xem đơn hàng</a>
 					<div class="toast__close">
 						<i class="fas fa-times"></i>
 					</div>
@@ -43,15 +51,15 @@
 			<div class="carousel-inner">
 				<div class="carousel-item active c-item">
 					<img class="c-img"
-						src="https://file.hstatic.net/1000075078/file/web_desktop_aeb6f5acca5d46adad94c262dcd9ac72.jpg">
+						src="/user/img/branch1.jpg">
 				</div>
 				<div class="carousel-item c-item">
 					<img class="c-img"
-						src="https://file.hstatic.net/1000075078/file/desktop_b924413014a1448eb0a38024cd8bc270.jpg">
+						src="/user/img/branch2.jpg">
 				</div>
 				<div class="carousel-item c-item">
 					<img class="c-img"
-						src="https://file.hstatic.net/1000075078/file/web_moi_-_desktop_7f410066fea94545b59667a4063a1e09.jpg">
+						src="/user/img/branch3.jpg">
 				</div>
 			</div>
 
@@ -67,7 +75,7 @@
 				<div class="col">
 					<div class="introduce-item">
 						<img class="img-introduce"
-							src="https://images.deliveryhero.io/image/fd-ph/LH/h6bn-hero.jpg" />
+							src="/user/img/branch4.jpg" />
 					</div>
 				</div>
 				<div class="col">

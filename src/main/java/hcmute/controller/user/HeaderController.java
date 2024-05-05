@@ -96,7 +96,6 @@ public class HeaderController {
 			}
 			model.addAttribute("milkTeasByNames", resultpaPage);
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

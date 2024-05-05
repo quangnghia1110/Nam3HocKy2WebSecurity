@@ -66,6 +66,8 @@ public class UserInfoController {
                 entity.setSurname(user.getSurname());
                 entity.setGender(user.getGender());
                 entity.setPhoneNumber(user.getPhoneNumber());
+                //entity.setEmail(user.getEmail());
+
 
                 userService.save(entity);
                 redirectAttributes.addFlashAttribute("message", "Thông tin đã được cập nhật thành công!");

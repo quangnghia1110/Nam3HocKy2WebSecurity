@@ -53,7 +53,7 @@ public class HomeController {
 		return "user/home";
 	}
 
-	//Thêm sản phẩm vào mục yêu thíhc
+	//Thêm sản phẩm vào mục yêu thích
     @GetMapping("home/addtofavorite")
 	public RedirectView addToCart(RedirectAttributes redirectAttributes, @RequestParam("id") int id) {
 		try {

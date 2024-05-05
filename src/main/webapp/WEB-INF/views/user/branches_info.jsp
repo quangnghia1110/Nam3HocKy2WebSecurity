@@ -4,11 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<style>
+	.mtop-80{
+		margin-top: 80px;
+	}
+</style>
 </head>
 <body>
 	<div class="branch_info">
-		<div class="container p-4" style="margin-top: 80px">
+		<div class="container p-4 mtop-80" >
 			<div class="row">
 				<section class="col col-6">
 					<c:url

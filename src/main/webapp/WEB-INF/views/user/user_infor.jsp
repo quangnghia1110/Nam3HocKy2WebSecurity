@@ -81,7 +81,7 @@
 					name="birthday" value="${user.birthday}" readonly>
 				<div class="user-infor user-email">Email</div>
 				<input type="email" class="user-email-textbox textbox" name="email"
-					value="${user.email}" readonly> <input type="radio"
+					value="${user.email}"> <input type="radio"
 					name="gender" id="nam" value="1"
 					${user.gender == 1 ? 'checked' : ''} required>Nam <input
 					type="radio" name="gender" id="nu" value="0"

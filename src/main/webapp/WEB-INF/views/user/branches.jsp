@@ -4,10 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<style>
+	.mtop-112{
+		margin-top: 112px
+	}
+</style>
 </head>
 <body>
-	<div class="branches_container" style="margin-top: 112px">
+	<div class="branches_container mtop-112">
 		<div class="container p-0">
 			<div class="row">
 				<section class="col col-3 branches_sidebar">
