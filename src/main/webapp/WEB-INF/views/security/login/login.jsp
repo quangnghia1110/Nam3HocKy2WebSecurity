@@ -13,6 +13,26 @@
     margin-top:15px;
 }
 </style>
+<script src="https://unpkg.com/validator@latest/validator.min.js"
+        integrity="sha512-hbPvueZAJx8GdjaqfRAA7FEz9UahrMeTaePHz/LDMDvDQaGSGxavizrTmww82nQmtfCUFW7wL9QmtTq8X/qM5A=="
+        crossorigin="anonymous">
+</script>
+
+    <script>
+        function validateForm() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var submitButton = document.getElementById('submit');
+
+            if (validator.isEmpty(username) || validator.isEmpty(password)) {
+                submitButton.disabled = true;
+            } else {
+                submitButton.disabled = false;
+            }
+        }
+        window.onload = validateForm;
+    </script>
+
 </head>
 <body>
 <div class="custom-center">
@@ -37,13 +57,17 @@
                                 </div>
                                 <div class="mb-3">
                                     <div class="form-floating">
-                                        <input type="text" id="username" name="username" value="${username}" class="form-control" placeholder="Username" />
+                                        <input type="text" id="username" name="username"
+                                               value="${username}" class="form-control"
+                                               placeholder="Username" oninput="validateForm();"/>
                                         <label class="form-label">User Name</label>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <div class="form-floating">
-                                        <input type="password" id="password" name="password" value="${password}" class="form-control" placeholder="Password" />
+                                        <input type="password" id="password" name="password"
+                                               value="${password}" class="form-control"
+                                               placeholder="Password" oninput="validateForm();"/>
                                         <label class="form-label">Password</label>
                                     </div>
                                 </div>

@@ -13,6 +13,11 @@
 	rel="stylesheet"
 	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
 	crossorigin="anonymous">
+
+<script src="https://unpkg.com/validator@latest/validator.min.js"
+		integrity="sha512-hbPvueZAJx8GdjaqfRAA7FEz9UahrMeTaePHz/LDMDvDQaGSGxavizrTmww82nQmtfCUFW7wL9QmtTq8X/qM5A=="
+		crossorigin="anonymous">
+</script>
 <script>
 	function checkPasswordMatch() {
 		var password = document.getElementById("password").value;
@@ -66,6 +71,51 @@ function isLongEnough(password) {// Hàm kiểm tra độ dài mật khẩu
 function validatePasswordRequirements(password) {//Hàm kiểm tra xem mật khẩu có đáp ứng các yêu cầu không
     return containsUpperCase(password) && containsLowerCase(password) && containsDigit(password) && containsSpecialCharacter(password) && isLongEnough(password);
 }
+// Hàm kiểm tra số điện thoại
+function validatePhoneNumber(input) {
+	var phoneNumber = input.value;
+	var phoneNumberError = document.getElementById("phoneNumberError");
+	phoneNumberError.innerHTML = ""; // Xóa thông báo lỗi trước khi kiểm tra lại
+	if (!validator.isMobilePhone(phoneNumber, "vi-VN")) {
+		phoneNumberError.innerHTML += "Số điện thoại không hợp lệ.";
+	}
+}
+// Hàm kiểm tra email
+function validateEmail(input) {
+	var email = input.value;
+	var emailError = document.getElementById("emailError");
+	emailError.innerHTML = ""; // Xóa thông báo lỗi trước khi kiểm tra lại
+	if (!validator.isEmail(email)) {
+		emailError.innerHTML += "Email không hợp lệ.";
+	}
+}
+// Hàm kiểm tra họ
+function validateSurname(input) {
+	var surname = input.value;
+	var surnameError = document.getElementById("surnameError");
+	surnameError.innerHTML = ""; // Xóa thông báo lỗi trước khi kiểm tra lại
+	if (validator.isEmpty(surname)) {
+		surnameError.innerHTML += "Họ không được để trống.";
+	}
+}
+// Hàm kiểm tra tên
+function validateName(input) {
+	var name = input.value;
+	var nameError = document.getElementById("nameError");
+	nameError.innerHTML = ""; // Xóa thông báo lỗi trước khi kiểm tra lại
+	if (validator.isEmpty(name)) {
+		nameError.innerHTML += "Tên không được để trống.";
+	}
+}
+// Hàm kiểm tra tên đăng nhập
+function validateUserName(input) {
+	var userName = input.value;
+	var userNameError = document.getElementById("userNameError");
+	userNameError.innerHTML = ""; // Xóa thông báo lỗi trước khi kiểm tra lại
+	if (validator.isEmpty(userName)) {
+		userNameError.innerHTML += "Tên đăng nhập không được để trống.";
+	}
+}
 
 </script>
 </head>
@@ -96,21 +146,31 @@ function validatePasswordRequirements(password) {//Hàm kiểm tra xem mật kh�
 										<div class="form-floating">
 											<input type="text" name="surname" id="floatingUsername"
 												class="form-control rounded-3" required="required"
-												placeholder="Surname" /> <label for="floatingUsername">Surname</label>
+												placeholder="Surname" oninput="validateSurname(this);"/> <label for="floatingUsername">Surname</label>
 										</div>
+										<div class="alert">
+											<div class="alert alert-danger" id="surnameError"></div>
+											<!-- Hiển thị thông báo lỗi họ -->
 									</div>
 									<div class="mb-3">
 										<div class="form-floating">
 											<input type="text" name="name" id="floatingUsername"
 												class="form-control rounded-3" required="required"
-												placeholder="Name" /> <label for="floatingUsername">Name</label>
+												placeholder="Name" oninput="validateName(this);" /> <label for="floatingUsername">Name</label>
 										</div>
+										<div class="alert">
+											<div class="alert alert-danger" id="nameError"></div>
+											<!-- Hiển thị thông báo lỗi tên -->
 									</div>
 									<div class="mb-3">
 										<div class="form-floating">
-											<input type="text" name="phoneNumber" id="floatingUsername"
+											<input type="text" name="phoneNumber" id="floatingPhoneNumber"
 												class="form-control rounded-3" required="required"
-												placeholder="Phonenumber" /> <label for="floatingUsername">Phonenumber</label>
+												placeholder="Phonenumber" oninput="validatePhoneNumber(this);"/> <label for="floatingUsername">Phonenumber</label>
+										</div>
+										<div class="alert">
+											<div class="alert alert-danger" id="phoneNumberError"></div>
+											<!-- Hiển thị thông báo lỗi số điện thoại -->
 										</div>
 									</div>
 
@@ -127,8 +187,12 @@ function validatePasswordRequirements(password) {//Hàm kiểm tra xem mật kh�
 										<div class="form-floating">
 											<input type="email" name="email" id="floatingEmail"
 												class="form-control rounded-3" required="required"
-												placeholder="name@example.com" /> <label
+												placeholder="name@example.com" oninput="validateEmail(this);" /> <label
 												for="floatingEmail">E-mail: </label>
+										</div>
+										<div class="alert">
+											<div class="alert alert-danger" id="emailError"></div>
+											<!-- Hiển thị thông báo lỗi email -->
 										</div>
 									</div>
 									<hr>
@@ -136,8 +200,11 @@ function validatePasswordRequirements(password) {//Hàm kiểm tra xem mật kh�
 										<div class="form-floating">
 											<input type="text" name="username" id="floatingUsername"
 												class="form-control rounded-3" required="required"
-												placeholder="Username" /> <label for="floatingUsername">Username</label>
+												placeholder="Username" oninput="validateUserName(this);"/> <label for="floatingUsername">Username</label>
 										</div>
+										<div class="alert">
+											<div class="alert alert-danger" id="userNameError"></div>
+											<!-- Hiển thị thông báo lỗi tên đăng nhập -->
 									</div>
 									<div class="mb-3  ">
 										<div class="form-floating">
@@ -163,7 +230,7 @@ function validatePasswordRequirements(password) {//Hàm kiểm tra xem mật kh�
 										</div>
 									</div>
 									<div class="d-grid gap-2 mb-2">
-										<button type="submit" id="submit"
+										<button type="submit" id="submit" disabled="disabled"
 											class="btn btn-lg rounded-3 btn-primary">Sign Up</button>
 										<small class="text-muted">By clicking Sign up, you
 											agree to the <a href="" data-bs-toggle="modal"
