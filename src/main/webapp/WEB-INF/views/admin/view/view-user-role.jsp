@@ -46,8 +46,8 @@
                        		<table class="table table-bordered" id="userRolesTable">
                             	<thead>
                                 	<tr>
-                                    	<th>Role ID</th>
-                                    	<th>Username</th>
+<!--                                     	<th>Role ID</th>
+ -->                                    	<th>Username</th>
                                     	<th>Password</th>
                                     	<th>Email</th>
                                     	<th>Role Name</th>
@@ -57,7 +57,7 @@
                             	<tbody>
                                 	<c:forEach var="userrole" items="${listUserRole}">
                                     	<tr>
-                                        	<td>${userrole.user.id}</td>
+                                        	<%-- <td>${userrole.user.id}</td> --%>
                                         	<td>${userrole.user.username}</td>
                                         	<td>${userrole.user.password}</td>
                                         	<td>${userrole.user.email}</td>
