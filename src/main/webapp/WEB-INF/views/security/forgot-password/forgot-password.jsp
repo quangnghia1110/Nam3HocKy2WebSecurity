@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ include file="/common/taglib.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/common/taglib.jsp" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,28 +20,28 @@
 </head>
 
 <body>
-	<section class="bg-white">
-		<div class="container py-2">
-			<div class="row" style="margin-top: 100px">
-				<div class="col-md-6">
-					<img src='<c:url value="/security/img/forgot_password.png" />'
-						alt="Image" class="img-fluid me-3" style="margin-left: -50px;">
-				</div>
-				<div class="col-md-6" style="margin-top: 120px">
-					<div class="card rounded-4 shadow">
-						<div class="card-body p-md-5 p-sm-2">
-							<h2 class="fw-bold mb-4">Forgot password</h2>
-							<form action="/security/forgot-password" method="post"
-								class="needs-validation" novalidate="true">
-								<div class="mb-3">
-									<div class="form-floating">
-										<input type="email" class="form-control rounded-3"
-											id="emailForgot" placeholder="Enter email" name="forgotEmail"
-											required="required"> <label for="emailForgot">Email:</label>
-										<div class="invalid-feedback">Please enter a valid
-											username.</div>
-									</div>
-								</div>
+    <section class="bg-white">
+        <div class="container py-2">
+            <div class="row" style="margin-top:100px">
+                <div class="col-md-6">
+                    <img src='<c:url value="/security/img/forgot_password.png" />' alt="Image" class="img-fluid me-3"
+                        style="margin-left: -50px;">
+                </div>
+                <div class="col-md-6" style="margin-top:120px">
+                    <div class="card rounded-4 shadow">
+                        <div class="card-body p-md-5 p-sm-2" >
+                            <h2 class="fw-bold mb-4">Forgot password</h2>
+                            <form action="/security/forgot-password" method="post" class="needs-validation"
+                                novalidate="true" >
+                                <sec:csrfInput />
+                                <div class="mb-3">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control rounded-3" id="emailForgot"
+                                            placeholder="Enter email" name="forgotEmail" required="required">
+                                        <label for="emailForgot">Email:</label>
+                                        <div class="invalid-feedback">Please enter a valid username.</div>
+                                    </div>
+                                </div>
 
 								<div class="d-grid gap-2 mb-2">
 									<button type="submit" id="submit"

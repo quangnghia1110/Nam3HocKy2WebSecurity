@@ -25,7 +25,7 @@ public class ProjectApplication {
 		filterRegistrationBean.addUrlPatterns("/*");
 		return filterRegistrationBean;
 	}
-	@Bean 
+	@Bean        
 	CommandLineRunner init(IStorageService storageService) {
 		return (args -> {
 			storageService.init();

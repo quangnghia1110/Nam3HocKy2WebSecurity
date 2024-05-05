@@ -80,9 +80,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// Cấu hình bảo mật HTTP
-		http.csrf().disable().cors();
-		//http.headers().contentSecurityPolicy("default-src 'self'; script-src 'self' https://code.jquery.com https://cdnjs.cloudflare.com https://maxcdn.bootstrapcdn.com https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css; style-src 'self' https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css ; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; frame-src 'none'; frame-ancestors 'none'; form-action 'self';");
+
+		http.headers().contentSecurityPolicy("trusted-cdn.com; frame-ancestors 'self'; form-action 'self'");
+		//http.headers().contentSecurityPolicy("default-src 'self'; script-src 'self' https://code.jquery.com https://cdnjs.cloudflare.com https://maxcdn.bootstrapcdn.com; style-src 'self'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; frame-src 'none'; frame-ancestors 'none'; form-action 'self';");
+
 		// Phân quyền
 		http.authorizeRequests()
 				// Không cần xác thực

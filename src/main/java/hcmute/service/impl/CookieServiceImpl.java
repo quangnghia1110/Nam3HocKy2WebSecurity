@@ -15,10 +15,13 @@ public class CookieServiceImpl {
 	HttpServletResponse response;
 	public String getValue(String name) {
 		Cookie[] cookies = request.getCookies();
+		
 		if(cookies != null) {
 			for(Cookie cookie: cookies) {
 				if(cookie.getName().equalsIgnoreCase(name)) {
+	                System.out.println(cookie.getName() + ": " + cookie.getValue());
 					return cookie.getValue();
+					
 				}
 			}
 		}
