@@ -53,17 +53,17 @@ public class ForgotPasswordServiceImpl implements IForgotPasswordService {
     }
 
     @Override
-    public void sendEmail(String recipientEmail, String link) {
+    public void sendEmail(String recipientEmail, String link, String userName) {
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
 
         try {
             helper.setTo(recipientEmail);
             helper.setSubject("MilkTea - Reset password");
-
+          
             String content = "<html><body>"
-                    + "<p>Xin chào bạn,</p>"
-                    + "<p>Bạn đã yêu cầu đặt lại mật khẩu của mình.</p>"
+            		+ "<p>Xin chào " + userName + ",</p>"
+            		+ "<p>Bạn đã yêu cầu đặt lại mật khẩu của mình.</p>"
                     + "<p>Vui lòng nhấp vào liên kết bên dưới để thay đổi mật khẩu của bạn:</p>"
                     + "<p><a href=\"" + link + "\">Change my password</a></p>"
                     + "<br>"

@@ -6,10 +6,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv=Content-Security-Policy
-	content="default-src 'self'; 
-			form-action 'self';
-			style-src 'self' https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css;">
 <title>Security</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
@@ -29,7 +25,7 @@
 	height: auto;
 }
 </style>
-<script src="https://unpkg.com/validator@latest/validator.min.js"
+<script src="https://unpkg.com/validator@13.11.0/validator.min.js"
         integrity="sha512-hbPvueZAJx8GdjaqfRAA7FEz9UahrMeTaePHz/LDMDvDQaGSGxavizrTmww82nQmtfCUFW7wL9QmtTq8X/qM5A=="
         crossorigin="anonymous">
 </script>
@@ -64,6 +60,8 @@
                     <div class="card rounded-4 shadow">
                         <div class="card-body p-md-5 p-sm-2">
                             <form action="/security/login" method="post">
+                            	<sec:csrfInput />
+                            
                                 <h3 class="fw-bold mb-4 text-center">Sign in</h3>
                                 <div class="alert">
                                     <c:if test="${not empty message}">

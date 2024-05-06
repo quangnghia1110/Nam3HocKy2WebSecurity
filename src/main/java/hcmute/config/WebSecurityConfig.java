@@ -81,9 +81,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.headers().contentSecurityPolicy("trusted-cdn.com; frame-ancestors 'self'; form-action 'self'");
+		//http.headers().contentSecurityPolicy("trusted-cdn.com; frame-ancestors 'self'; form-action 'self'");
 		//http.headers().contentSecurityPolicy("default-src 'self'; script-src 'self' https://code.jquery.com https://cdnjs.cloudflare.com https://maxcdn.bootstrapcdn.com; style-src 'self'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; frame-src 'none'; frame-ancestors 'none'; form-action 'self';");
-
+		//http.csrf().disable().cors();
 		// Phân quyền
 		http.authorizeRequests()
 				// Không cần xác thực

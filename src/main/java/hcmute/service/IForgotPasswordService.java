@@ -9,5 +9,5 @@ public interface IForgotPasswordService {
 
     void updatePassword(UserEntity account, String newPass);
 
-    void sendEmail(String recipientEmail, String link);
+    void sendEmail(String recipientEmail, String link, String userName);
 }

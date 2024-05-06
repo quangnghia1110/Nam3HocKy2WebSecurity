@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/common/taglib.jsp"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,13 +64,14 @@
 		<div class="user-infor-title">Thông tin tài khoản</div>
 		<div class="user-infor-container">
 			<form action="/user_infor/edit/${user.id}" method="post">
+				<sec:csrfInput />
 				<div class="user-infor user-name">Tên khách hàng</div>
 				<div class="user-infor user-name-textbox">
 					<input type="text" class="user-lastname-textbox textbox"
 						name="name" value="${user.name}" required
-						placeholder="Tên khách hàng"> <input type="text"
+						placeholder="Tên khách hàng" value="${fn:substring(user.name, 0, 50)}" maxlength="50"> <input type="text"
 						class="user-surname-textbox textbox" name="surname"
-						value="${user.surname}" required placeholder="Họ khách hàng">
+						value="${user.surname}" required placeholder="Họ khách hàng" value="${fn:substring(user.name, 0, 50)}" maxlength="50">
 				</div>
 				<div class="user-infor user-name">UserName</div>
 				<div class="user-infor user-name-textbox">

@@ -5,18 +5,15 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv=Content-Security-Policy
-	content="default-src 'self'; 
-			style-src 'self' https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css;;
-			form-action 'self';">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-	crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv=Content-Security-Policy
+  content="default-src 'self'; 
+      style-src 'self' https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css;;
+      form-action 'self';">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 </head>
 
 <body>
@@ -43,22 +40,22 @@
                                     </div>
                                 </div>
 
-								<div class="d-grid gap-2 mb-2">
-									<button type="submit" id="submit"
-										class="btn btn-lg rounded-3 btn-primary">Send</button>
-								</div>
-								<div class="alert">
-									<c:if test="${not empty message}">
-										<div class="alert alert-success">${message}</div>
-									</c:if>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+                                <div class="d-grid gap-2 mb-2">
+                                    <button type="submit" id="submit"
+                                        class="btn btn-lg rounded-3 btn-primary">Send</button>
+                                </div>
+                                <div class="alert">
+                                    <c:if test="${not empty message}">
+                                        <div class="alert alert-success">${message}</div>
+                                    </c:if>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>

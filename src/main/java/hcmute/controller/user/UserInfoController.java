@@ -57,7 +57,13 @@ public class UserInfoController {
     public ModelAndView edit(ModelMap model, @PathVariable("user_id") Integer userId,
             RedirectAttributes redirectAttributes, @Valid @ModelAttribute("user") UserModel user,
             BindingResult result) {
-
+    	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String loggedInUsername = authentication.getName();
+        UserEntity userEntity = userService.findById(userId).orElse(null);
+        if (userEntity != null && !userEntity.getUsername().equals(loggedInUsername)) {
+          model.addAttribute("message_edit", "Bạn không có quyền chỉnh sửa thông tin người dùng này.");
+          return new ModelAndView("redirect:/user_infor/" + userId);
+        }
         if (user != null) {
             UserEntity entity = userService.findById(userId).orElse(null);
             if (entity != null) {
@@ -66,7 +72,7 @@ public class UserInfoController {
                 entity.setSurname(user.getSurname());
                 entity.setGender(user.getGender());
                 entity.setPhoneNumber(user.getPhoneNumber());
-                //entity.setEmail(user.getEmail());
+                entity.setEmail(user.getEmail());
 
 
                 userService.save(entity);

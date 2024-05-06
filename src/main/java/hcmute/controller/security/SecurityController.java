@@ -80,7 +80,7 @@ public class SecurityController {
 		try {
 			passService.updateResetPasswordToken(token, email);
 			String resetPasswordLink = CommonUtils.getSiteURL(req) + "/security/change-password?token=" + token;
-			passService.sendEmail(email, resetPasswordLink);
+			passService.sendEmail(email, resetPasswordLink, user.getUsername());
 		} catch (Exception e) {
 			model.addAttribute("message", "Có gì đó không ổn. Vui lòng thử lại sau.");
 		}
